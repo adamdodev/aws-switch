@@ -4,7 +4,7 @@ set -e
 while [ $# -gt 0 ]; do
     case "$1" in
         --help|-h)
-        echo "Usage: aws-switch [--help|-h] ACCCOUNT"
+        echo "Usage: aws-switch [--help|-h] PROFILE"
         exit 0
         ;;
     esac
@@ -14,16 +14,16 @@ done
 
 if [ -z "$ACCOUNT" ]; then
     echo "Error: No account set!"
-    echo "Usage: aws-switch [--help|-h] ACCCOUNT"
+    echo "Usage: aws-switch [--help|-h] PROFILE"
     exit 1
 fi
 
 echo "Switching to AWS profile $ACCOUNT..."
 
 if command -v aws-profile 1>/dev/null 2>&1; then
-    export AWS_PROFILE_SWITCH="$ACCOUNT"
+    export AWS_SWITCH_PROFILE="$ACCOUNT"
 	aws-profile "$ACCOUNT" "$SHELL"
-	export AWS_PROFILE_SWITCH=
+	export AWS_SWITCH_PROFILE=
 else
 	echo "Error: You must have aws-profile installed, e.g. pip install aws-profile"
 	exit 1
