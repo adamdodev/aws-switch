@@ -1,17 +1,19 @@
 # aws-switch
-Quickly switch between AWS accounts on the command line
+Quickly switch between AWS accounts on the command line.
 
-Uses [aws-profile](https://pypi.org/project/aws-profile/) to generate AWS keys, assume role etc and spawns a new shell with these values populated.
+Uses [aws-vault](https://github.com/99designs/aws-vault) to securely store credentials, generate temporary AWS keys, assume role etc and spawns a new shell with these values populated.
 
 ## Prerequisites
 
-### aws-profile
+### aws-vault
 
-`pip install --upgrade awscli aws-profile`
+`brew install aws-vault`
+
+Other install methods available here - https://github.com/99designs/aws-vault
 
 ## Install
 
-Git clone and add the `aws-switch` script to your PATH
+Git clone and add the `aws-switch` script to your PATH, e.g. symlink.
 
 **Todo:** brew install
 
@@ -39,6 +41,20 @@ my-aws-account
 ```
 
 The `AWS_SWITCH_PROFILE` env var is set in the spawned shell for debugging purposes.
+
+## Legacy Versions
+
+**Note:** We recommend using the latest v2.x version for improved security (`with aws-vault`).
+
+### v1.x
+
+Uses [aws-profile](https://pypi.org/project/aws-profile/) to generate AWS keys, assume role etc and spawns a new shell with these values populated.
+
+#### Prerequisites
+
+##### aws-profile
+
+`pip install --upgrade awscli aws-profile`
 
 ## Info
 

@@ -20,11 +20,11 @@ fi
 
 echo "Switching to AWS profile $ACCOUNT..."
 
-if command -v aws-profile 1>/dev/null 2>&1; then
+if command -v aws-vault 1>/dev/null 2>&1; then
     export AWS_SWITCH_PROFILE="$ACCOUNT"
-	aws-profile "$ACCOUNT" "$SHELL"
+    aws-vault exec "$ACCOUNT" -- "$SHELL"
 	export AWS_SWITCH_PROFILE=
 else
-	echo "Error: You must have aws-profile installed, e.g. pip install aws-profile"
+	echo "Error: You must have aws-vault installed, see https://github.com/99designs/aws-vault"
 	exit 1
 fi
